@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+.block {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+
+    .name {
+        width: 200px;
+        text-align: left;
+    }
+
+    div {
+        margin-right: 10px;
+    }
+}
+
+.btn_group {
+    display: flex;
+}

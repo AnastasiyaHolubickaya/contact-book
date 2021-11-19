@@ -1,0 +1,14 @@
+.container {
+  margin: 50px auto;
+  width: 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.block .info_block span {
+  margin-right: 20px;
+}
+
+/*# sourceMappingURL=detail.module.css.map */

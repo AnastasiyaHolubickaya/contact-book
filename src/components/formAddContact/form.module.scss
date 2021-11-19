@@ -1,0 +1,53 @@
+@mixin style($width) {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    width: $width;
+    color: #444444;
+}
+
+.container {
+    .btnAddField {
+        p {
+            font-size: 11px;
+        }
+    }
+}
+
+.form {
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    text-align: center;
+
+    .spanForm {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bolder;
+    }
+
+    .bForm {
+        @include style(100%)
+    }
+
+    .bForm_edit {
+        @include style(63px)
+    }
+
+    .formSummaryError {
+        border: 1px solid red;
+        color: red;
+    }
+}
+
+.form_edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        margin-left: 20px;
+    }
+}

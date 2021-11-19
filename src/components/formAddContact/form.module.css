@@ -1,0 +1,46 @@
+.container .btnAddField p {
+  font-size: 11px;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.form .spanForm {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+.form .bForm {
+  display: block;
+  margin: 10px 0;
+  font-size: 14px;
+  width: 100%;
+  color: #444444;
+}
+.form .bForm_edit {
+  display: block;
+  margin: 10px 0;
+  font-size: 14px;
+  width: 63px;
+  color: #444444;
+}
+.form .formSummaryError {
+  border: 1px solid red;
+  color: red;
+}
+
+.form_edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form_edit button {
+  margin-left: 20px;
+}
+
+/*# sourceMappingURL=form.module.css.map */
