@@ -40,6 +40,11 @@
         border: 1px solid red;
         color: red;
     }
+
+    .btn_group{
+        display: flex;
+        flex-flow: row;
+    }
 }
 
 .form_edit {

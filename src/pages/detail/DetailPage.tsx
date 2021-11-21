@@ -64,6 +64,8 @@ export const DetailPage: React.FC<propsType> = ({contacts}) => {
                                         initialValues={contacts[id]}
                                         onSubmit={onSubmit}
                                         showModal={showModal}
+                                        id={id}
+                                        contacts={contacts}
                 />
                 : <div>{showContact(contacts[id], keys)}
                     <Button value={"редактировать"} onClick={() => activateEditMode(true)}/>

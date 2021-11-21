@@ -42,6 +42,7 @@ const ContactForm: React.FC<InjectedFormProps<ownPropsType> & ownPropsType> = ({
                 }
                 <Button value={"Сохранить"}/>
             </form>
+            <Button onClick={() => activateAddMode(false)} value={"отмена"}/>
         </div>
     )
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "../formAddContact/form.module.css";
 import {Input, Textarea} from "../formControls/FormControls";
 import {
@@ -9,22 +9,39 @@ import {
 } from "../../utils/validation/validator";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Button} from "../button/Button";
+import {Modal} from "../modal/Modal";
+import AddNewFieldReduxForm from "../formAddNewField/formAddNewField";
+import {parsingInputData} from "../../utils/parsingInputData/parsingInputData";
+import {actions} from "../../redux/actionCreators";
+import {addToObject} from "../../utils/AddToObject/addToObject";
 
 
 type ownPropsType = {
     activateEditMode: (active: boolean) => void
     keys: Array<string>
     showModal: (show: boolean) => void
+    id: number
+    contacts: any
 }
 
 
-const ContactForm: React.FC<InjectedFormProps<ownPropsType> & ownPropsType> = ({handleSubmit, error, activateEditMode, keys, showModal}) => {
-
+const ContactForm: React.FC<InjectedFormProps<ownPropsType> & ownPropsType> = ({handleSubmit, error, activateEditMode, keys, showModal, id, contacts}) => {
+    let [isModalActive, setIsModalActive] = useState(false);
     const handleOnClick = (e: string) => {
         showModal(true);
         localStorage.removeItem(e);
         localStorage.setItem("field", e);
     };
+    const showModalWithForm = (show: boolean) => {
+        setIsModalActive(show);
+    };
+    const onSubmit = (formData: any) => {
+        let mass = parsingInputData(formData.text);
+        contacts[id] = addToObject(contacts[id], mass);
+        actions.setContacts(contacts);
+        showModalWithForm(false);
+    };
+
     return (
         <div className={classes.container} onClick={() => activateEditMode(false)}>
             <form onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit} className={classes.form}>
@@ -40,14 +57,25 @@ const ContactForm: React.FC<InjectedFormProps<ownPropsType> & ownPropsType> = ({
                         </div>
                     )
                 }
-
                 {
                     error && <div className={classes.formSummaryError}> {error}</div>
                 }
 
-                <Button value={"Сохранить"}/>
+                <div className={classes.btn_group}>
+                    <Button value={"Сохранить"}/>
+                    <Button onClick={() => activateEditMode(false)} value={"назад"}/>
+                </div>
             </form>
-            <Button onClick={() => activateEditMode(false)} value={"отмена"}/>
+            <div onClick={(e) => e.stopPropagation()}>
+                <Button value={"добавить поле"} onClick={() => showModalWithForm(true)}/>
+                <Modal showModal={showModalWithForm}
+                       isModalActive={isModalActive}>
+                    {// @ts-ignore
+                    }<AddNewFieldReduxForm showModalWithForm={showModalWithForm} onSubmit={onSubmit}/>
+                </Modal>
+
+            </div>
+
         </div>
     )
 };

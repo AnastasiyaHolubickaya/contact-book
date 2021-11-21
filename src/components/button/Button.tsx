@@ -3,7 +3,7 @@ import classes from './button.module.css';
 
 type propsType = {
     value: string
-    onClick?: () => void
+    onClick?: (e?:any) => void
 }
 
 export const Button: React.FC<propsType> = ({value, onClick}) => {

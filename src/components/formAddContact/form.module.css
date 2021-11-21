@@ -42,5 +42,8 @@
 .form_edit button {
   margin-left: 20px;
 }
-
+.btn_group{
+  display: flex;
+  flex-flow: row;
+}
 /*# sourceMappingURL=form.module.css.map */
